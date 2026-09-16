@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Snake — Classic gameplay reimagined with modern design, smooth animations, and responsive controls.">
+  <title>SNAKE — Classic • Reimagined</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header id="header">
+      <div class="header-left">
+        <h1 class="logo">SNAKE</h1>
+        <p class="subtitle">Classic • Reimagined</p>
+      </div>
+      <div class="header-right">
+        <div class="score-group">
+          <div class="score-box" id="score-box">
+            <span class="score-label">Score</span>
+            <span class="score-value" id="current-score">0</span>
+          </div>
+          <div class="score-box">
+            <span class="score-label">Best</span>
+            <span class="score-value" id="high-score">0</span>
+          </div>
+        </div>
+        <div class="header-controls">
+          <button id="btn-sound" class="icon-btn" aria-label="Toggle sound" title="Toggle sound">
+            <span class="sound-icon" id="sound-icon">🔊</span>
+          </button>
+          <button id="btn-pause" class="icon-btn" aria-label="Pause game" title="Pause game" disabled>
+            <span>⏸</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════ LEVEL INDICATOR ═══════════ -->
+    <div id="level-indicator" class="level-indicator" aria-live="polite">
+      <span class="level-label">Level</span>
+      <span class="level-value" id="level-value">1</span>
+    </div>
+
+    <!-- ═══════════ GAME CONTAINER ═══════════ -->
+    <main id="game-container">
+      <canvas id="game-canvas" aria-label="Snake game board"></canvas>
+
+      <!-- Countdown overlay -->
+      <div id="countdown-overlay" class="overlay overlay--countdown hidden" role="alert" aria-live="assertive">
+        <span class="countdown-number" id="countdown-number">3</span>
+      </div>
+
+      <!-- Level-up toast -->
+      <div id="levelup-toast" class="levelup-toast hidden" role="status" aria-live="polite">
+        <span>⚡ SPEED UP!</span>
+      </div>
+
+      <!-- ═══ START SCREEN ═══ -->
+      <div id="screen-start" class="overlay overlay--start" role="dialog" aria-label="Start screen">
+        <div class="overlay-card">
+          <h2 class="overlay-title">SNAKE</h2>
+          <p class="overlay-subtitle">Classic gameplay. Modern experience.</p>
+          <button id="btn-start" class="btn btn--primary btn--large" autofocus>START GAME</button>
+          <div class="best-score-line" id="start-best">Best Score: <strong>0</strong></div>
+          <div class="controls-hint">
+            <span>⌨ Arrow Keys / WASD</span>
+            <span>📱 Swipe to move</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PAUSE OVERLAY ═══ -->
+      <div id="screen-pause" class="overlay overlay--pause hidden" role="dialog" aria-label="Game paused">
+        <div class="overlay-card">
+          <h2 class="overlay-title">PAUSED</h2>
+          <div class="overlay-actions">
+            <button id="btn-resume" class="btn btn--primary">RESUME</button>
+            <button id="btn-restart-pause" class="btn btn--secondary">RESTART</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ GAME OVER OVERLAY ═══ -->
+      <div id="screen-gameover" class="overlay overlay--gameover hidden" role="dialog" aria-label="Game over">
+        <div class="overlay-card overlay-card--gameover">
+          <h2 class="overlay-title overlay-title--gameover">GAME OVER</h2>
+          <div class="gameover-scores">
+            <div class="gameover-score-row">
+              <span>Score</span>
+              <strong id="go-score">0</strong>
+            </div>
+            <div class="gameover-score-row">
+              <span>Best</span>
+              <strong id="go-best">0</strong>
+            </div>
+          </div>
+          <div class="overlay-actions">
+            <button id="btn-play-again" class="btn btn--primary">PLAY AGAIN</button>
+            <button id="btn-main-menu" class="btn btn--secondary">MAIN MENU</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer id="footer">
+      <p class="footer-hint" id="footer-hint">Press <kbd>P</kbd> or <kbd>Space</kbd> to pause</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
